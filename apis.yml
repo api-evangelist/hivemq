@@ -75,7 +75,7 @@ common:
     url: https://docs.hivemq.com
   - type: Pricing
     url: https://www.hivemq.com/pricing
-  - type: Sign Up
+  - type: SignUp
     url: https://www.hivemq.com/signup
   - type: Cloud
     url: https://www.hivemq.com/cloud
