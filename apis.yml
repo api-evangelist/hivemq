@@ -87,6 +87,8 @@ common:
     url: https://www.hivemq.com/blog
   - type: LinkedIn
     url: https://www.linkedin.com/company/hivemq
+  - type: LLMsTxt
+    url: https://docs.hivemq.com/llms.txt
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
