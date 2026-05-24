@@ -1,0 +1,256 @@
+openapi: 3.1.0
+info:
+  title: HiveMQ REST API
+  description: |
+    REST API for administering a HiveMQ broker. Endpoints cover MQTT
+    client listing, search, disconnect; session invalidation; backups;
+    diagnostic archives; trace recordings; and Data Hub schemas, policies,
+    and modules. Endpoint shapes inferred from the public HiveMQ REST API
+    documentation at docs.hivemq.com/hivemq/latest/rest-api/.
+  version: "1.0"
+  contact:
+    name: HiveMQ Documentation
+    url: https://docs.hivemq.com/hivemq/latest/rest-api/index.html
+servers:
+  - url: http://127.0.0.1:8888/api/v1
+    description: Default HiveMQ REST API listener
+security:
+  - BearerAuth: []
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      description: |
+        Authentication is disabled by default. When enabled via the
+        HiveMQ Enterprise Security Extension or Enterprise Extension SDK
+        REST Service, a bearer token is required.
+paths:
+  /mqtt/clients:
+    get:
+      summary: List MQTT clients
+      operationId: listMqttClients
+      responses:
+        "200": { description: OK }
+  /mqtt/clients/{clientId}:
+    parameters:
+      - name: clientId
+        in: path
+        required: true
+        schema: { type: string }
+    get:
+      summary: Get details for a specific MQTT client
+      operationId: getMqttClient
+      responses:
+        "200": { description: OK }
+    delete:
+      summary: Disconnect an MQTT client
+      operationId: disconnectMqttClient
+      responses:
+        "204": { description: Disconnected }
+  /mqtt/clients/{clientId}/connection:
+    parameters:
+      - name: clientId
+        in: path
+        required: true
+        schema: { type: string }
+    get:
+      summary: Get connection status of an MQTT client
+      operationId: getMqttClientConnection
+      responses:
+        "200": { description: OK }
+  /mqtt/clients/{clientId}/subscriptions:
+    parameters:
+      - name: clientId
+        in: path
+        required: true
+        schema: { type: string }
+    get:
+      summary: List subscriptions for a client
+      operationId: listMqttClientSubscriptions
+      responses:
+        "200": { description: OK }
+  /mqtt/clients/{clientId}/session:
+    parameters:
+      - name: clientId
+        in: path
+        required: true
+        schema: { type: string }
+    delete:
+      summary: Invalidate the client session
+      operationId: invalidateMqttClientSession
+      responses:
+        "204": { description: Invalidated }
+  /management/backups:
+    get:
+      summary: List backups
+      operationId: listBackups
+      responses:
+        "200": { description: OK }
+    post:
+      summary: Create a backup
+      operationId: createBackup
+      responses:
+        "201": { description: Created }
+  /management/backups/{backupId}:
+    parameters:
+      - name: backupId
+        in: path
+        required: true
+        schema: { type: string }
+    get:
+      summary: Get a backup
+      operationId: getBackup
+      responses:
+        "200": { description: OK }
+    delete:
+      summary: Delete a backup
+      operationId: deleteBackup
+      responses:
+        "204": { description: Deleted }
+  /management/backups/{backupId}/restore:
+    parameters:
+      - name: backupId
+        in: path
+        required: true
+        schema: { type: string }
+    post:
+      summary: Restore a backup
+      operationId: restoreBackup
+      responses:
+        "202": { description: Accepted }
+  /management/backups/{backupId}/file:
+    parameters:
+      - name: backupId
+        in: path
+        required: true
+        schema: { type: string }
+    get:
+      summary: Download a backup file
+      operationId: downloadBackup
+      responses:
+        "200": { description: OK }
+  /management/diagnostic-archives:
+    get:
+      summary: List diagnostic archives
+      operationId: listDiagnosticArchives
+      responses:
+        "200": { description: OK }
+    post:
+      summary: Create a diagnostic archive
+      operationId: createDiagnosticArchive
+      responses:
+        "201": { description: Created }
+  /management/diagnostic-archives/{archiveId}:
+    parameters:
+      - name: archiveId
+        in: path
+        required: true
+        schema: { type: string }
+    get:
+      summary: Get a diagnostic archive
+      operationId: getDiagnosticArchive
+      responses:
+        "200": { description: OK }
+    delete:
+      summary: Delete a diagnostic archive
+      operationId: deleteDiagnosticArchive
+      responses:
+        "204": { description: Deleted }
+  /management/trace-recordings:
+    get:
+      summary: List trace recordings
+      operationId: listTraceRecordings
+      responses:
+        "200": { description: OK }
+    post:
+      summary: Start a trace recording
+      operationId: startTraceRecording
+      responses:
+        "201": { description: Created }
+  /management/trace-recordings/{recordingId}:
+    parameters:
+      - name: recordingId
+        in: path
+        required: true
+        schema: { type: string }
+    get:
+      summary: Get a trace recording
+      operationId: getTraceRecording
+      responses:
+        "200": { description: OK }
+    delete:
+      summary: Stop and delete a trace recording
+      operationId: deleteTraceRecording
+      responses:
+        "204": { description: Deleted }
+  /management/trace-recordings/{recordingId}/file:
+    parameters:
+      - name: recordingId
+        in: path
+        required: true
+        schema: { type: string }
+    get:
+      summary: Download a trace recording file
+      operationId: downloadTraceRecording
+      responses:
+        "200": { description: OK }
+  /data-hub/schemas:
+    get:
+      summary: List Data Hub schemas
+      operationId: listDataHubSchemas
+      responses:
+        "200": { description: OK }
+    post:
+      summary: Create a Data Hub schema
+      operationId: createDataHubSchema
+      responses:
+        "201": { description: Created }
+  /data-hub/schemas/{schemaId}:
+    parameters:
+      - name: schemaId
+        in: path
+        required: true
+        schema: { type: string }
+    get:
+      summary: Get a Data Hub schema
+      operationId: getDataHubSchema
+      responses:
+        "200": { description: OK }
+    delete:
+      summary: Delete a Data Hub schema
+      operationId: deleteDataHubSchema
+      responses:
+        "204": { description: Deleted }
+  /data-hub/policies:
+    get:
+      summary: List Data Hub policies
+      operationId: listDataHubPolicies
+      responses:
+        "200": { description: OK }
+    post:
+      summary: Create a Data Hub policy
+      operationId: createDataHubPolicy
+      responses:
+        "201": { description: Created }
+  /data-hub/policies/{policyId}:
+    parameters:
+      - name: policyId
+        in: path
+        required: true
+        schema: { type: string }
+    get:
+      summary: Get a Data Hub policy
+      operationId: getDataHubPolicy
+      responses:
+        "200": { description: OK }
+    put:
+      summary: Update a Data Hub policy
+      operationId: updateDataHubPolicy
+      responses:
+        "200": { description: OK }
+    delete:
+      summary: Delete a Data Hub policy
+      operationId: deleteDataHubPolicy
+      responses:
+        "204": { description: Deleted }
