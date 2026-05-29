@@ -1,0 +1,340 @@
+asyncapi: 2.6.0
+info:
+  title: HiveMQ MQTT Broker
+  version: '4.x'
+  description: >-
+    AsyncAPI description of the message-oriented surface of a HiveMQ enterprise
+    MQTT broker. HiveMQ implements MQTT 3.1, MQTT 3.1.1, and MQTT 5 over plain
+    TCP, TLS, WebSocket, and Secure WebSocket listeners. MQTT is a publish and
+    subscribe protocol — topics are defined by the deploying organization rather
+    than predefined by the broker. This document therefore models the standard
+    transport bindings, the WebSocket subprotocol, the supported QoS levels,
+    and a generic application topic plus the optional Sparkplug B namespace
+    that is commonly deployed on HiveMQ for industrial IoT use cases.
+  contact:
+    name: HiveMQ
+    url: https://www.hivemq.com
+  license:
+    name: HiveMQ Commercial / HiveMQ Community Edition (Apache 2.0)
+    url: https://www.hivemq.com/legal/
+
+defaultContentType: application/octet-stream
+
+servers:
+  tcp:
+    url: localhost:1883
+    protocol: mqtt
+    protocolVersion: '5.0.0'
+    description: >-
+      Default plain TCP MQTT listener on IANA port 1883. Accepts MQTT 3.1,
+      MQTT 3.1.1, and MQTT 5 clients.
+    bindings:
+      mqtt:
+        clientId: hivemq-client
+        cleanSession: true
+        keepAlive: 60
+        bindingVersion: 0.1.0
+  tls:
+    url: localhost:8883
+    protocol: secure-mqtt
+    protocolVersion: '5.0.0'
+    description: >-
+      Default TLS-secured MQTT listener on IANA port 8883.
+    bindings:
+      mqtt:
+        clientId: hivemq-client
+        cleanSession: true
+        keepAlive: 60
+        bindingVersion: 0.1.0
+  websocket:
+    url: ws://localhost:8000/mqtt
+    protocol: ws
+    protocolVersion: '13'
+    description: >-
+      MQTT over WebSocket listener. HiveMQ uses the WebSocket subprotocol
+      identifier `mqtt`, which carries both MQTT 3.1.1 and MQTT 5. The default
+      path is `/mqtt` and the typical port is 8000.
+  secure-websocket:
+    url: wss://localhost:8884/mqtt
+    protocol: wss
+    protocolVersion: '13'
+    description: >-
+      MQTT over TLS-secured WebSocket. Subprotocol `mqtt`, default path
+      `/mqtt`, typical port 8884.
+
+channels:
+  '{topic}':
+    description: >-
+      Generic MQTT application topic. MQTT topics are UTF-8 strings organised
+      as hierarchical levels separated by `/`. Wildcards `+` (single level)
+      and `#` (multi level) are valid only in subscriptions. The actual topic
+      tree is defined by the application that uses HiveMQ.
+    parameters:
+      topic:
+        description: >-
+          The full MQTT topic name, for example `sensors/floor1/temperature`.
+        schema:
+          type: string
+          minLength: 1
+          maxLength: 65535
+    publish:
+      operationId: publishToTopic
+      summary: Publish a message to an MQTT topic.
+      bindings:
+        mqtt:
+          qos: 1
+          retain: false
+          bindingVersion: 0.1.0
+      message:
+        $ref: '#/components/messages/MqttApplicationMessage'
+    subscribe:
+      operationId: subscribeToTopic
+      summary: Subscribe to an MQTT topic or topic filter.
+      bindings:
+        mqtt:
+          qos: 1
+          bindingVersion: 0.1.0
+      message:
+        $ref: '#/components/messages/MqttApplicationMessage'
+
+  'spBv1.0/{group_id}/NBIRTH/{edge_node_id}':
+    description: >-
+      Sparkplug B Edge Node BIRTH certificate. Published by an Edge of Network
+      (EoN) node when it comes online. Payload is a Sparkplug B protobuf
+      encoded `Payload` message containing the node's metrics. Sparkplug B is
+      an OASIS standard commonly deployed on HiveMQ for industrial IoT.
+    parameters:
+      group_id:
+        $ref: '#/components/parameters/SparkplugGroupId'
+      edge_node_id:
+        $ref: '#/components/parameters/SparkplugEdgeNodeId'
+    publish:
+      operationId: sparkplugNBirth
+      bindings:
+        mqtt:
+          qos: 0
+          retain: false
+          bindingVersion: 0.1.0
+      message:
+        $ref: '#/components/messages/SparkplugPayload'
+
+  'spBv1.0/{group_id}/NDEATH/{edge_node_id}':
+    description: >-
+      Sparkplug B Edge Node DEATH certificate. Registered as the MQTT Last
+      Will and Testament for the EoN node so the broker publishes it when
+      the node disconnects ungracefully.
+    parameters:
+      group_id:
+        $ref: '#/components/parameters/SparkplugGroupId'
+      edge_node_id:
+        $ref: '#/components/parameters/SparkplugEdgeNodeId'
+    publish:
+      operationId: sparkplugNDeath
+      bindings:
+        mqtt:
+          qos: 0
+          retain: false
+          bindingVersion: 0.1.0
+      message:
+        $ref: '#/components/messages/SparkplugPayload'
+
+  'spBv1.0/{group_id}/NDATA/{edge_node_id}':
+    description: Sparkplug B Edge Node DATA — runtime metric updates from the EoN node.
+    parameters:
+      group_id:
+        $ref: '#/components/parameters/SparkplugGroupId'
+      edge_node_id:
+        $ref: '#/components/parameters/SparkplugEdgeNodeId'
+    publish:
+      operationId: sparkplugNData
+      bindings:
+        mqtt:
+          qos: 0
+          retain: false
+          bindingVersion: 0.1.0
+      message:
+        $ref: '#/components/messages/SparkplugPayload'
+
+  'spBv1.0/{group_id}/NCMD/{edge_node_id}':
+    description: Sparkplug B Edge Node COMMAND — write commands targeted at the EoN node.
+    parameters:
+      group_id:
+        $ref: '#/components/parameters/SparkplugGroupId'
+      edge_node_id:
+        $ref: '#/components/parameters/SparkplugEdgeNodeId'
+    subscribe:
+      operationId: sparkplugNCmd
+      bindings:
+        mqtt:
+          qos: 0
+          retain: false
+          bindingVersion: 0.1.0
+      message:
+        $ref: '#/components/messages/SparkplugPayload'
+
+  'spBv1.0/{group_id}/DBIRTH/{edge_node_id}/{device_id}':
+    description: Sparkplug B Device BIRTH certificate for a device attached to an EoN node.
+    parameters:
+      group_id:
+        $ref: '#/components/parameters/SparkplugGroupId'
+      edge_node_id:
+        $ref: '#/components/parameters/SparkplugEdgeNodeId'
+      device_id:
+        $ref: '#/components/parameters/SparkplugDeviceId'
+    publish:
+      operationId: sparkplugDBirth
+      bindings:
+        mqtt:
+          qos: 0
+          retain: false
+          bindingVersion: 0.1.0
+      message:
+        $ref: '#/components/messages/SparkplugPayload'
+
+  'spBv1.0/{group_id}/DDEATH/{edge_node_id}/{device_id}':
+    description: Sparkplug B Device DEATH certificate for an attached device.
+    parameters:
+      group_id:
+        $ref: '#/components/parameters/SparkplugGroupId'
+      edge_node_id:
+        $ref: '#/components/parameters/SparkplugEdgeNodeId'
+      device_id:
+        $ref: '#/components/parameters/SparkplugDeviceId'
+    publish:
+      operationId: sparkplugDDeath
+      bindings:
+        mqtt:
+          qos: 0
+          retain: false
+          bindingVersion: 0.1.0
+      message:
+        $ref: '#/components/messages/SparkplugPayload'
+
+  'spBv1.0/{group_id}/DDATA/{edge_node_id}/{device_id}':
+    description: Sparkplug B Device DATA — runtime metric updates from a device.
+    parameters:
+      group_id:
+        $ref: '#/components/parameters/SparkplugGroupId'
+      edge_node_id:
+        $ref: '#/components/parameters/SparkplugEdgeNodeId'
+      device_id:
+        $ref: '#/components/parameters/SparkplugDeviceId'
+    publish:
+      operationId: sparkplugDData
+      bindings:
+        mqtt:
+          qos: 0
+          retain: false
+          bindingVersion: 0.1.0
+      message:
+        $ref: '#/components/messages/SparkplugPayload'
+
+  'spBv1.0/{group_id}/DCMD/{edge_node_id}/{device_id}':
+    description: Sparkplug B Device COMMAND — write commands targeted at a device.
+    parameters:
+      group_id:
+        $ref: '#/components/parameters/SparkplugGroupId'
+      edge_node_id:
+        $ref: '#/components/parameters/SparkplugEdgeNodeId'
+      device_id:
+        $ref: '#/components/parameters/SparkplugDeviceId'
+    subscribe:
+      operationId: sparkplugDCmd
+      bindings:
+        mqtt:
+          qos: 0
+          retain: false
+          bindingVersion: 0.1.0
+      message:
+        $ref: '#/components/messages/SparkplugPayload'
+
+  'spBv1.0/STATE/{scada_host_id}':
+    description: >-
+      Sparkplug B primary application (SCADA host) STATE message. Indicates
+      whether the primary host application is ONLINE or OFFLINE.
+    parameters:
+      scada_host_id:
+        description: Identifier of the Sparkplug primary host application.
+        schema:
+          type: string
+    publish:
+      operationId: sparkplugState
+      bindings:
+        mqtt:
+          qos: 1
+          retain: true
+          bindingVersion: 0.1.0
+      message:
+        name: SparkplugStateMessage
+        contentType: text/plain
+        payload:
+          type: string
+          enum:
+            - ONLINE
+            - OFFLINE
+
+components:
+  parameters:
+    SparkplugGroupId:
+      description: Logical grouping of Edge Nodes (e.g. a site or production line).
+      schema:
+        type: string
+    SparkplugEdgeNodeId:
+      description: Identifier of the Sparkplug Edge of Network (EoN) node.
+      schema:
+        type: string
+    SparkplugDeviceId:
+      description: Identifier of a device attached to an Edge of Network node.
+      schema:
+        type: string
+
+  messages:
+    MqttApplicationMessage:
+      name: MqttApplicationMessage
+      title: Generic MQTT Application Message
+      summary: >-
+        An MQTT PUBLISH payload. Payload is opaque to the broker; HiveMQ
+        forwards bytes unchanged. MQTT 5 adds user properties, payload
+        format indicator, content type, response topic, and correlation
+        data which are modeled in the message headers.
+      contentType: application/octet-stream
+      headers:
+        type: object
+        properties:
+          contentType:
+            type: string
+            description: MQTT 5 Content Type property (MIME type of payload).
+          payloadFormatIndicator:
+            type: integer
+            enum: [0, 1]
+            description: 0 = unspecified bytes, 1 = UTF-8 encoded character data.
+          responseTopic:
+            type: string
+            description: MQTT 5 request/response — topic on which a response is expected.
+          correlationData:
+            type: string
+            description: MQTT 5 correlation data (base64).
+          messageExpiryInterval:
+            type: integer
+            description: MQTT 5 message expiry in seconds.
+          userProperties:
+            type: object
+            additionalProperties:
+              type: string
+            description: MQTT 5 user properties (free-form key/value).
+      payload:
+        type: string
+        format: binary
+
+    SparkplugPayload:
+      name: SparkplugPayload
+      title: Sparkplug B Payload
+      summary: >-
+        Sparkplug B protobuf-encoded `Payload` message as defined by the
+        Eclipse Tahu / OASIS Sparkplug specification. Contains a timestamp,
+        sequence number, and a list of metrics with names, datatypes, and
+        values.
+      contentType: application/x-protobuf
+      payload:
+        type: string
+        format: binary
