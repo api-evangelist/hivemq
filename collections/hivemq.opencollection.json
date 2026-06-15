@@ -1,0 +1,479 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "HiveMQ REST API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "List MQTT clients",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "http://127.0.0.1:8888/api/v1/mqtt/clients"
+      },
+      "docs": "List MQTT clients"
+    },
+    {
+      "info": {
+        "name": "Get details for a specific MQTT client",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "http://127.0.0.1:8888/api/v1/mqtt/clients/:clientId",
+        "params": [
+          {
+            "name": "clientId",
+            "value": "",
+            "type": "path"
+          }
+        ]
+      },
+      "docs": "Get details for a specific MQTT client"
+    },
+    {
+      "info": {
+        "name": "Disconnect an MQTT client",
+        "type": "http"
+      },
+      "http": {
+        "method": "DELETE",
+        "url": "http://127.0.0.1:8888/api/v1/mqtt/clients/:clientId",
+        "params": [
+          {
+            "name": "clientId",
+            "value": "",
+            "type": "path"
+          }
+        ]
+      },
+      "docs": "Disconnect an MQTT client"
+    },
+    {
+      "info": {
+        "name": "Get connection status of an MQTT client",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "http://127.0.0.1:8888/api/v1/mqtt/clients/:clientId/connection",
+        "params": [
+          {
+            "name": "clientId",
+            "value": "",
+            "type": "path"
+          }
+        ]
+      },
+      "docs": "Get connection status of an MQTT client"
+    },
+    {
+      "info": {
+        "name": "List subscriptions for a client",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "http://127.0.0.1:8888/api/v1/mqtt/clients/:clientId/subscriptions",
+        "params": [
+          {
+            "name": "clientId",
+            "value": "",
+            "type": "path"
+          }
+        ]
+      },
+      "docs": "List subscriptions for a client"
+    },
+    {
+      "info": {
+        "name": "Invalidate the client session",
+        "type": "http"
+      },
+      "http": {
+        "method": "DELETE",
+        "url": "http://127.0.0.1:8888/api/v1/mqtt/clients/:clientId/session",
+        "params": [
+          {
+            "name": "clientId",
+            "value": "",
+            "type": "path"
+          }
+        ]
+      },
+      "docs": "Invalidate the client session"
+    },
+    {
+      "info": {
+        "name": "List backups",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "http://127.0.0.1:8888/api/v1/management/backups"
+      },
+      "docs": "List backups"
+    },
+    {
+      "info": {
+        "name": "Create a backup",
+        "type": "http"
+      },
+      "http": {
+        "method": "POST",
+        "url": "http://127.0.0.1:8888/api/v1/management/backups"
+      },
+      "docs": "Create a backup"
+    },
+    {
+      "info": {
+        "name": "Get a backup",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "http://127.0.0.1:8888/api/v1/management/backups/:backupId",
+        "params": [
+          {
+            "name": "backupId",
+            "value": "",
+            "type": "path"
+          }
+        ]
+      },
+      "docs": "Get a backup"
+    },
+    {
+      "info": {
+        "name": "Delete a backup",
+        "type": "http"
+      },
+      "http": {
+        "method": "DELETE",
+        "url": "http://127.0.0.1:8888/api/v1/management/backups/:backupId",
+        "params": [
+          {
+            "name": "backupId",
+            "value": "",
+            "type": "path"
+          }
+        ]
+      },
+      "docs": "Delete a backup"
+    },
+    {
+      "info": {
+        "name": "Restore a backup",
+        "type": "http"
+      },
+      "http": {
+        "method": "POST",
+        "url": "http://127.0.0.1:8888/api/v1/management/backups/:backupId/restore",
+        "params": [
+          {
+            "name": "backupId",
+            "value": "",
+            "type": "path"
+          }
+        ]
+      },
+      "docs": "Restore a backup"
+    },
+    {
+      "info": {
+        "name": "Download a backup file",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "http://127.0.0.1:8888/api/v1/management/backups/:backupId/file",
+        "params": [
+          {
+            "name": "backupId",
+            "value": "",
+            "type": "path"
+          }
+        ]
+      },
+      "docs": "Download a backup file"
+    },
+    {
+      "info": {
+        "name": "List diagnostic archives",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "http://127.0.0.1:8888/api/v1/management/diagnostic-archives"
+      },
+      "docs": "List diagnostic archives"
+    },
+    {
+      "info": {
+        "name": "Create a diagnostic archive",
+        "type": "http"
+      },
+      "http": {
+        "method": "POST",
+        "url": "http://127.0.0.1:8888/api/v1/management/diagnostic-archives"
+      },
+      "docs": "Create a diagnostic archive"
+    },
+    {
+      "info": {
+        "name": "Get a diagnostic archive",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "http://127.0.0.1:8888/api/v1/management/diagnostic-archives/:archiveId",
+        "params": [
+          {
+            "name": "archiveId",
+            "value": "",
+            "type": "path"
+          }
+        ]
+      },
+      "docs": "Get a diagnostic archive"
+    },
+    {
+      "info": {
+        "name": "Delete a diagnostic archive",
+        "type": "http"
+      },
+      "http": {
+        "method": "DELETE",
+        "url": "http://127.0.0.1:8888/api/v1/management/diagnostic-archives/:archiveId",
+        "params": [
+          {
+            "name": "archiveId",
+            "value": "",
+            "type": "path"
+          }
+        ]
+      },
+      "docs": "Delete a diagnostic archive"
+    },
+    {
+      "info": {
+        "name": "List trace recordings",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "http://127.0.0.1:8888/api/v1/management/trace-recordings"
+      },
+      "docs": "List trace recordings"
+    },
+    {
+      "info": {
+        "name": "Start a trace recording",
+        "type": "http"
+      },
+      "http": {
+        "method": "POST",
+        "url": "http://127.0.0.1:8888/api/v1/management/trace-recordings"
+      },
+      "docs": "Start a trace recording"
+    },
+    {
+      "info": {
+        "name": "Get a trace recording",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "http://127.0.0.1:8888/api/v1/management/trace-recordings/:recordingId",
+        "params": [
+          {
+            "name": "recordingId",
+            "value": "",
+            "type": "path"
+          }
+        ]
+      },
+      "docs": "Get a trace recording"
+    },
+    {
+      "info": {
+        "name": "Stop and delete a trace recording",
+        "type": "http"
+      },
+      "http": {
+        "method": "DELETE",
+        "url": "http://127.0.0.1:8888/api/v1/management/trace-recordings/:recordingId",
+        "params": [
+          {
+            "name": "recordingId",
+            "value": "",
+            "type": "path"
+          }
+        ]
+      },
+      "docs": "Stop and delete a trace recording"
+    },
+    {
+      "info": {
+        "name": "Download a trace recording file",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "http://127.0.0.1:8888/api/v1/management/trace-recordings/:recordingId/file",
+        "params": [
+          {
+            "name": "recordingId",
+            "value": "",
+            "type": "path"
+          }
+        ]
+      },
+      "docs": "Download a trace recording file"
+    },
+    {
+      "info": {
+        "name": "List Data Hub schemas",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "http://127.0.0.1:8888/api/v1/data-hub/schemas"
+      },
+      "docs": "List Data Hub schemas"
+    },
+    {
+      "info": {
+        "name": "Create a Data Hub schema",
+        "type": "http"
+      },
+      "http": {
+        "method": "POST",
+        "url": "http://127.0.0.1:8888/api/v1/data-hub/schemas"
+      },
+      "docs": "Create a Data Hub schema"
+    },
+    {
+      "info": {
+        "name": "Get a Data Hub schema",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "http://127.0.0.1:8888/api/v1/data-hub/schemas/:schemaId",
+        "params": [
+          {
+            "name": "schemaId",
+            "value": "",
+            "type": "path"
+          }
+        ]
+      },
+      "docs": "Get a Data Hub schema"
+    },
+    {
+      "info": {
+        "name": "Delete a Data Hub schema",
+        "type": "http"
+      },
+      "http": {
+        "method": "DELETE",
+        "url": "http://127.0.0.1:8888/api/v1/data-hub/schemas/:schemaId",
+        "params": [
+          {
+            "name": "schemaId",
+            "value": "",
+            "type": "path"
+          }
+        ]
+      },
+      "docs": "Delete a Data Hub schema"
+    },
+    {
+      "info": {
+        "name": "List Data Hub policies",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "http://127.0.0.1:8888/api/v1/data-hub/policies"
+      },
+      "docs": "List Data Hub policies"
+    },
+    {
+      "info": {
+        "name": "Create a Data Hub policy",
+        "type": "http"
+      },
+      "http": {
+        "method": "POST",
+        "url": "http://127.0.0.1:8888/api/v1/data-hub/policies"
+      },
+      "docs": "Create a Data Hub policy"
+    },
+    {
+      "info": {
+        "name": "Get a Data Hub policy",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "http://127.0.0.1:8888/api/v1/data-hub/policies/:policyId",
+        "params": [
+          {
+            "name": "policyId",
+            "value": "",
+            "type": "path"
+          }
+        ]
+      },
+      "docs": "Get a Data Hub policy"
+    },
+    {
+      "info": {
+        "name": "Update a Data Hub policy",
+        "type": "http"
+      },
+      "http": {
+        "method": "PUT",
+        "url": "http://127.0.0.1:8888/api/v1/data-hub/policies/:policyId",
+        "params": [
+          {
+            "name": "policyId",
+            "value": "",
+            "type": "path"
+          }
+        ]
+      },
+      "docs": "Update a Data Hub policy"
+    },
+    {
+      "info": {
+        "name": "Delete a Data Hub policy",
+        "type": "http"
+      },
+      "http": {
+        "method": "DELETE",
+        "url": "http://127.0.0.1:8888/api/v1/data-hub/policies/:policyId",
+        "params": [
+          {
+            "name": "policyId",
+            "value": "",
+            "type": "path"
+          }
+        ]
+      },
+      "docs": "Delete a Data Hub policy"
+    }
+  ],
+  "bundled": true
+}
