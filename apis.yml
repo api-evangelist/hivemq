@@ -10,7 +10,7 @@ description: >-
   a REST API (OpenAPI 3.0) for broker administration, client management,
   backups, trace recordings, and Data Hub policy management.
 type: Index
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 tags:
   - MQTT
   - IoT
