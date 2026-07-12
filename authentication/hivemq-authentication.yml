@@ -1,0 +1,16 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/hivemq-openapi.yml
+summary:
+  types:
+  - http
+schemes:
+- name: BearerAuth
+  type: http
+  scheme: bearer
+  description: |-
+    Authentication is disabled by default. When enabled via the
+    HiveMQ Enterprise Security Extension or Enterprise Extension SDK
+    REST Service, a bearer token is required.
+  sources:
+  - openapi/hivemq-openapi.yml

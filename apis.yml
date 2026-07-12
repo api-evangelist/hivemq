@@ -71,6 +71,14 @@ apis:
         url: https://raw.githubusercontent.com/api-evangelist/hivemq/refs/heads/main/asyncapi/hivemq-asyncapi.yml
 
 common:
+  - type: TrustCenter
+    url: security/hivemq-trust-center.yml
+  - type: VulnerabilityDisclosure
+    url: security/hivemq-vulnerability-disclosure.yml
+  - type: DomainSecurity
+    url: security/hivemq-domain-security.yml
+  - type: Authentication
+    url: authentication/hivemq-authentication.yml
   - type: Website
     url: https://www.hivemq.com
   - type: Documentation
