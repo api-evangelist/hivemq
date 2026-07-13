@@ -1,0 +1,23 @@
+# hivemq — AsyncAPI Spectral ruleset (strengthened)
+# Plain Spectral. Rules measured from this provider's own AsyncAPI event
+# conventions by strengthen_asyncapi.py, then self-validated against the spec.
+#
+# Provenance:
+#   - operation-id-casing: camel @ 100% (n=11, v2)
+extends:
+  - spectral:asyncapi
+rules:
+  operation-id-casing:
+    description: Operation IDs should be camelCase (the dominant convention in this API).
+    severity: warn
+    given: $.channels[*][publish,subscribe].operationId
+    then:
+      function: pattern
+      functionOptions:
+        match: ^[a-z][A-Za-z0-9]*$
+  no-empty-descriptions:
+    description: Descriptions must not be empty strings.
+    severity: warn
+    given: $..description
+    then:
+      function: truthy
