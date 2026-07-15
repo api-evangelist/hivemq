@@ -71,6 +71,8 @@ apis:
         url: https://raw.githubusercontent.com/api-evangelist/hivemq/refs/heads/main/asyncapi/hivemq-asyncapi.yml
 
 common:
+  - type: AgenticAccess
+    url: agentic-access/hivemq-agentic-access.yml
   - type: TrustCenter
     url: security/hivemq-trust-center.yml
   - type: VulnerabilityDisclosure
