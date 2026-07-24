@@ -1,0 +1,115 @@
+openapi: 3.1.0
+info:
+  title: HiveMQ REST Data Hub Mqtt API
+  description: 'REST API for administering a HiveMQ broker. Endpoints cover MQTT
+
+    client listing, search, disconnect; session invalidation; backups;
+
+    diagnostic archives; trace recordings; and Data Hub schemas, policies,
+
+    and modules. Endpoint shapes inferred from the public HiveMQ REST API
+
+    documentation at docs.hivemq.com/hivemq/latest/rest-api/.
+
+    '
+  version: '1.0'
+  contact:
+    name: HiveMQ Documentation
+    url: https://docs.hivemq.com/hivemq/latest/rest-api/index.html
+servers:
+- url: http://127.0.0.1:8888/api/v1
+  description: Default HiveMQ REST API listener
+security:
+- BearerAuth: []
+tags:
+- name: Mqtt
+paths:
+  /mqtt/clients:
+    get:
+      summary: List MQTT clients
+      operationId: listMqttClients
+      responses:
+        '200':
+          description: OK
+      tags:
+      - Mqtt
+  /mqtt/clients/{clientId}:
+    parameters:
+    - name: clientId
+      in: path
+      required: true
+      schema:
+        type: string
+    get:
+      summary: Get details for a specific MQTT client
+      operationId: getMqttClient
+      responses:
+        '200':
+          description: OK
+      tags:
+      - Mqtt
+    delete:
+      summary: Disconnect an MQTT client
+      operationId: disconnectMqttClient
+      responses:
+        '204':
+          description: Disconnected
+      tags:
+      - Mqtt
+  /mqtt/clients/{clientId}/connection:
+    parameters:
+    - name: clientId
+      in: path
+      required: true
+      schema:
+        type: string
+    get:
+      summary: Get connection status of an MQTT client
+      operationId: getMqttClientConnection
+      responses:
+        '200':
+          description: OK
+      tags:
+      - Mqtt
+  /mqtt/clients/{clientId}/subscriptions:
+    parameters:
+    - name: clientId
+      in: path
+      required: true
+      schema:
+        type: string
+    get:
+      summary: List subscriptions for a client
+      operationId: listMqttClientSubscriptions
+      responses:
+        '200':
+          description: OK
+      tags:
+      - Mqtt
+  /mqtt/clients/{clientId}/session:
+    parameters:
+    - name: clientId
+      in: path
+      required: true
+      schema:
+        type: string
+    delete:
+      summary: Invalidate the client session
+      operationId: invalidateMqttClientSession
+      responses:
+        '204':
+          description: Invalidated
+      tags:
+      - Mqtt
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      description: 'Authentication is disabled by default. When enabled via the
+
+        HiveMQ Enterprise Security Extension or Enterprise Extension SDK
+
+        REST Service, a bearer token is required.
+
+        '

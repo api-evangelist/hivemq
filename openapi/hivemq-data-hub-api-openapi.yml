@@ -1,0 +1,126 @@
+openapi: 3.1.0
+info:
+  title: HiveMQ REST Data Hub API
+  description: 'REST API for administering a HiveMQ broker. Endpoints cover MQTT
+
+    client listing, search, disconnect; session invalidation; backups;
+
+    diagnostic archives; trace recordings; and Data Hub schemas, policies,
+
+    and modules. Endpoint shapes inferred from the public HiveMQ REST API
+
+    documentation at docs.hivemq.com/hivemq/latest/rest-api/.
+
+    '
+  version: '1.0'
+  contact:
+    name: HiveMQ Documentation
+    url: https://docs.hivemq.com/hivemq/latest/rest-api/index.html
+servers:
+- url: http://127.0.0.1:8888/api/v1
+  description: Default HiveMQ REST API listener
+security:
+- BearerAuth: []
+tags:
+- name: Data Hub
+paths:
+  /data-hub/schemas:
+    get:
+      summary: List Data Hub schemas
+      operationId: listDataHubSchemas
+      responses:
+        '200':
+          description: OK
+      tags:
+      - Data Hub
+    post:
+      summary: Create a Data Hub schema
+      operationId: createDataHubSchema
+      responses:
+        '201':
+          description: Created
+      tags:
+      - Data Hub
+  /data-hub/schemas/{schemaId}:
+    parameters:
+    - name: schemaId
+      in: path
+      required: true
+      schema:
+        type: string
+    get:
+      summary: Get a Data Hub schema
+      operationId: getDataHubSchema
+      responses:
+        '200':
+          description: OK
+      tags:
+      - Data Hub
+    delete:
+      summary: Delete a Data Hub schema
+      operationId: deleteDataHubSchema
+      responses:
+        '204':
+          description: Deleted
+      tags:
+      - Data Hub
+  /data-hub/policies:
+    get:
+      summary: List Data Hub policies
+      operationId: listDataHubPolicies
+      responses:
+        '200':
+          description: OK
+      tags:
+      - Data Hub
+    post:
+      summary: Create a Data Hub policy
+      operationId: createDataHubPolicy
+      responses:
+        '201':
+          description: Created
+      tags:
+      - Data Hub
+  /data-hub/policies/{policyId}:
+    parameters:
+    - name: policyId
+      in: path
+      required: true
+      schema:
+        type: string
+    get:
+      summary: Get a Data Hub policy
+      operationId: getDataHubPolicy
+      responses:
+        '200':
+          description: OK
+      tags:
+      - Data Hub
+    put:
+      summary: Update a Data Hub policy
+      operationId: updateDataHubPolicy
+      responses:
+        '200':
+          description: OK
+      tags:
+      - Data Hub
+    delete:
+      summary: Delete a Data Hub policy
+      operationId: deleteDataHubPolicy
+      responses:
+        '204':
+          description: Deleted
+      tags:
+      - Data Hub
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      description: 'Authentication is disabled by default. When enabled via the
+
+        HiveMQ Enterprise Security Extension or Enterprise Extension SDK
+
+        REST Service, a bearer token is required.
+
+        '
