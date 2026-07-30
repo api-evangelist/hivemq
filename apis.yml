@@ -10,7 +10,19 @@ description: >-
   a REST API (OpenAPI 3.0) for broker administration, client management,
   backups, trace recordings, and Data Hub policy management.
 type: Index
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/hivemq.png
 tags:
   - MQTT
   - IoT
@@ -24,52 +36,67 @@ created: '2026-05-11'
 modified: '2026-05-29'
 specificationVersion: '0.19'
 apis:
-  - aid: hivemq:rest-api
-    name: HiveMQ REST API
-    description: >-
-      REST API for administering a HiveMQ broker including client listing
-      and disconnection, session invalidation, backup and restore,
-      diagnostic archive generation, trace recordings, and Data Hub schema
-      and policy management. The API binds to 127.0.0.1:8888 by default
-      and is documented via an OpenAPI 3.0 specification served at the
-      /rest-api/specification/ endpoint. Authentication is configured via
-      the HiveMQ Enterprise Security Extension or Enterprise Extension
-      SDK REST Service.
-    humanURL: https://docs.hivemq.com/hivemq/latest/rest-api/index.html
-    baseURL: http://127.0.0.1:8888
-    tags:
-      - Broker Administration
-      - Client Management
-      - Backup
-      - Data Hub
-      - Trace Recordings
-    properties:
-      - type: Documentation
-        url: https://docs.hivemq.com/hivemq/latest/rest-api/index.html
-      - type: OpenAPI
-        url: https://docs.hivemq.com/hivemq/latest/rest-api/specification/
-      - type: Configuration
-        url: https://docs.hivemq.com/hivemq/latest/rest-api/configuration.html
-  - aid: hivemq:mqtt-websocket
-    name: HiveMQ MQTT over WebSocket
-    description: >-
-      MQTT 3.x and MQTT 5 messaging endpoints exposed over WebSocket for
-      browser and edge clients to publish and subscribe to topics. Used by
-      web dashboards and JavaScript IoT clients to interact with the HiveMQ
-      broker without native TCP MQTT support.
-    humanURL: https://docs.hivemq.com/hivemq/latest/user-guide/listeners.html
-    baseURL: ws://localhost:8000/mqtt
-    tags:
-      - MQTT
-      - WebSocket
-      - Pub Sub
-      - IoT
-    properties:
-      - type: Documentation
-        url: https://docs.hivemq.com/hivemq/latest/user-guide/listeners.html
-      - type: AsyncAPI
-        url: https://raw.githubusercontent.com/api-evangelist/hivemq/refs/heads/main/asyncapi/hivemq-asyncapi.yml
-
+- aid: hivemq:mqtt-websocket
+  name: HiveMQ MQTT over WebSocket
+  description: >-
+    MQTT 3.x and MQTT 5 messaging endpoints exposed over WebSocket for browser and edge clients to publish
+    and subscribe to topics. Used by web dashboards and JavaScript IoT clients to interact with the HiveMQ
+    broker without native TCP MQTT support.
+  humanURL: https://docs.hivemq.com/hivemq/latest/user-guide/listeners.html
+  baseURL: ws://localhost:8000/mqtt
+  tags:
+  - MQTT
+  - WebSocket
+  - Pub Sub
+  - IoT
+  properties:
+  - type: Documentation
+    url: https://docs.hivemq.com/hivemq/latest/user-guide/listeners.html
+  - type: AsyncAPI
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/hivemq/refs/heads/main/asyncapi/hivemq-asyncapi.yml
+- aid: hivemq:hivemq-data-hub-api
+  name: HiveMQ Data Hub API
+  description: The Data Hub API from HiveMQ — 4 operation(s) for data hub.
+  humanURL: https://docs.hivemq.com/hivemq/latest/rest-api/index.html
+  baseURL: http://127.0.0.1:8888
+  tags:
+  - Data Hub
+  properties:
+  - type: OpenAPI
+    url: openapi/hivemq-data-hub-api-openapi.yml
+  - type: Documentation
+    url: https://docs.hivemq.com/hivemq/latest/rest-api/index.html
+  - type: Configuration
+    url: https://docs.hivemq.com/hivemq/latest/rest-api/configuration.html
+- aid: hivemq:hivemq-management-api
+  name: HiveMQ Management API
+  description: The Management API from HiveMQ — 9 operation(s) for management.
+  humanURL: https://docs.hivemq.com/hivemq/latest/rest-api/index.html
+  baseURL: http://127.0.0.1:8888
+  tags:
+  - Management
+  properties:
+  - type: OpenAPI
+    url: openapi/hivemq-management-api-openapi.yml
+  - type: Documentation
+    url: https://docs.hivemq.com/hivemq/latest/rest-api/index.html
+  - type: Configuration
+    url: https://docs.hivemq.com/hivemq/latest/rest-api/configuration.html
+- aid: hivemq:hivemq-mqtt-api
+  name: HiveMQ Mqtt API
+  description: The Mqtt API from HiveMQ — 5 operation(s) for mqtt.
+  humanURL: https://docs.hivemq.com/hivemq/latest/rest-api/index.html
+  baseURL: http://127.0.0.1:8888
+  tags:
+  - Mqtt
+  properties:
+  - type: OpenAPI
+    url: openapi/hivemq-mqtt-api-openapi.yml
+  - type: Documentation
+    url: https://docs.hivemq.com/hivemq/latest/rest-api/index.html
+  - type: Configuration
+    url: https://docs.hivemq.com/hivemq/latest/rest-api/configuration.html
 common:
   - type: AgenticAccess
     url: agentic-access/hivemq-agentic-access.yml
