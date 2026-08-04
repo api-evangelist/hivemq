@@ -1,0 +1,18 @@
+{
+  "provider": "hivemq",
+  "sources": [
+    "hivemq-data-hub-api-openapi.yml",
+    "hivemq-management-api-openapi.yml",
+    "hivemq-mqtt-api-openapi.yml"
+  ],
+  "outputs": [
+    "hivemq-data-hub-api-openapi.yml",
+    "hivemq-management-api-openapi.yml",
+    "hivemq-mqtt-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
