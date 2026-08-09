@@ -1,0 +1,42 @@
+generated: '2026-07-19'
+method: searched
+source: https://github.com/hivemq/mqtt-cli
+docs: https://hivemq.github.io/mqtt-cli/
+description: >-
+  MQTT CLI is HiveMQ's open-source command line interface for interacting with
+  MQTT 5.0 and MQTT 3.1.1 brokers and for administering HiveMQ Enterprise
+  brokers. It ships as a single binary and also provides an interactive shell
+  mode. Licensed Apache-2.0.
+name: MQTT CLI
+binary: mqtt
+latest_version: 4.53.0
+license: Apache-2.0
+repo: https://github.com/hivemq/mqtt-cli
+install:
+  - method: homebrew
+    command: brew install hivemq/mqtt-cli/mqtt-cli
+  - method: packages
+    note: >-
+      Native .deb / .rpm packages and a portable zip are published on the GitHub
+      releases page; see https://hivemq.github.io/mqtt-cli/docs/installation/
+commands:
+  - name: pub
+    summary: Publish a message to one or more topics on a broker.
+    example: mqtt pub -t my/topic -m "hello" -h broker.example.com
+  - name: sub
+    summary: Subscribe to one or more topics and stream received messages.
+    example: mqtt sub -t my/topic -h broker.example.com
+  - name: sh
+    summary: >-
+      Enter interactive shell mode to manage multiple persistent client
+      connections, subscriptions, and publishes in one session.
+    example: mqtt sh
+  - name: test
+    summary: >-
+      Probe a broker's MQTT feature support and compliance (MQTT versions, QoS,
+      retained messages, shared subscriptions, etc.).
+    example: mqtt test -h broker.example.com
+key_flows:
+  - Quick publish/subscribe against HiveMQ Cloud or any MQTT broker.
+  - Interactive multi-client session management via shell mode.
+  - Broker feature/compliance testing before onboarding a client fleet.

@@ -1,0 +1,31 @@
+generated: '2026-07-19'
+method: searched
+source: https://status.hivemq.cloud/
+description: >-
+  Operational lifecycle posture for the HiveMQ platform: status page, service
+  level agreement, and versioning. No public OpenAPI is published for the HiveMQ
+  REST surface, so deprecated operations are not derivable here.
+status_page: https://status.hivemq.cloud/
+status_components:
+  - MQTT Broker
+  - Console and UI
+  - API
+  - Authentication & Access Management
+  - Integrations and Metrics
+  - Account and Billing Services
+sla:
+  url: https://www.hivemq.com/static/legal/802FGRPyZM/hivemq-cloud-uptime-service-level-policy.pdf
+  name: HiveMQ Cloud Uptime Service Level Policy
+support_policy:
+  url: https://www.hivemq.com/static/legal/MgcI9RDxnh/hivemq-consolidated-support-policy.pdf
+versioning:
+  scheme: semantic
+  detail: >-
+    HiveMQ broker and platform components follow semantic-style MAJOR.MINOR.PATCH
+    versioning; the MQTT CLI is versioned independently (latest 4.53.0).
+  release_notes: https://docs.hivemq.com/
+deprecation:
+  policy_url: null
+  sunset_header: null
+  note: No public API deprecation policy or RFC 8594 Sunset-header support was located.
+deprecated_operations: []

@@ -1,0 +1,47 @@
+generated: '2026-07-19'
+method: searched
+source: https://github.com/hivemq
+description: >-
+  First-party HiveMQ client libraries and tools, verified against the HiveMQ
+  GitHub organization and Maven Central. HiveMQ's official developer surface is
+  JVM-centric (the broker and its tooling are Java); the MQTT client library and
+  the MQTT CLI are the two primary first-party consumable packages. For other
+  languages HiveMQ documents the use of standard third-party MQTT clients
+  (e.g. Eclipse Paho), which are not first-party and are not listed here.
+packages:
+  - language: java
+    registry: maven-central
+    name: com.hivemq:hivemq-mqtt-client
+    url: https://central.sonatype.com/artifact/com.hivemq/hivemq-mqtt-client
+    source: https://github.com/hivemq/hivemq-mqtt-client
+    install: 'implementation("com.hivemq:hivemq-mqtt-client:1.3.17")'
+    version: 1.3.17
+    license: Apache-2.0
+    official: true
+    note: >-
+      MQTT 5.0 and 3.1.1 compatible, high-performance Java client with blocking,
+      async, and reactive (RxJava) API flavours and backpressure support.
+  - language: java
+    registry: github-releases
+    name: mqtt-cli
+    url: https://github.com/hivemq/mqtt-cli
+    source: https://github.com/hivemq/mqtt-cli
+    install: brew install hivemq/mqtt-cli/mqtt-cli
+    version: 4.53.0
+    license: Apache-2.0
+    official: true
+    note: >-
+      Command line interface for MQTT 5.0 / 3.1.1 clients and HiveMQ broker
+      management. Distributed via a Homebrew tap and native packages. See
+      cli/hive-mq-cli.yml for the command surface.
+  - language: java
+    registry: github
+    name: hivemq-extension-sdk
+    url: https://github.com/hivemq/hivemq-extension-sdk
+    source: https://github.com/hivemq/hivemq-extension-sdk
+    install: 'implementation("com.hivemq:hivemq-extension-sdk:latest")'
+    license: Apache-2.0
+    official: true
+    note: >-
+      SDK for building HiveMQ Enterprise broker extensions (interceptors,
+      authenticators, authorizers, and integrations).
