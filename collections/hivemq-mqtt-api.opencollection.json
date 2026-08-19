@@ -1,0 +1,125 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "HiveMQ REST Data Hub Mqtt API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Mqtt",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List MQTT clients",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://127.0.0.1:8888/api/v1/mqtt/clients"
+          },
+          "docs": "List MQTT clients"
+        },
+        {
+          "info": {
+            "name": "Get details for a specific MQTT client",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://127.0.0.1:8888/api/v1/mqtt/clients/:clientId",
+            "params": [
+              {
+                "name": "clientId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get details for a specific MQTT client"
+        },
+        {
+          "info": {
+            "name": "Disconnect an MQTT client",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://127.0.0.1:8888/api/v1/mqtt/clients/:clientId",
+            "params": [
+              {
+                "name": "clientId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Disconnect an MQTT client"
+        },
+        {
+          "info": {
+            "name": "Get connection status of an MQTT client",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://127.0.0.1:8888/api/v1/mqtt/clients/:clientId/connection",
+            "params": [
+              {
+                "name": "clientId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get connection status of an MQTT client"
+        },
+        {
+          "info": {
+            "name": "List subscriptions for a client",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://127.0.0.1:8888/api/v1/mqtt/clients/:clientId/subscriptions",
+            "params": [
+              {
+                "name": "clientId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List subscriptions for a client"
+        },
+        {
+          "info": {
+            "name": "Invalidate the client session",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://127.0.0.1:8888/api/v1/mqtt/clients/:clientId/session",
+            "params": [
+              {
+                "name": "clientId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Invalidate the client session"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

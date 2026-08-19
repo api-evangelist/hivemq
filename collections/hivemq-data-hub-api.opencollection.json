@@ -1,0 +1,158 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "HiveMQ REST Data Hub API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Data Hub",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Data Hub schemas",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://127.0.0.1:8888/api/v1/data-hub/schemas"
+          },
+          "docs": "List Data Hub schemas"
+        },
+        {
+          "info": {
+            "name": "Create a Data Hub schema",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://127.0.0.1:8888/api/v1/data-hub/schemas"
+          },
+          "docs": "Create a Data Hub schema"
+        },
+        {
+          "info": {
+            "name": "Get a Data Hub schema",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://127.0.0.1:8888/api/v1/data-hub/schemas/:schemaId",
+            "params": [
+              {
+                "name": "schemaId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a Data Hub schema"
+        },
+        {
+          "info": {
+            "name": "Delete a Data Hub schema",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://127.0.0.1:8888/api/v1/data-hub/schemas/:schemaId",
+            "params": [
+              {
+                "name": "schemaId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a Data Hub schema"
+        },
+        {
+          "info": {
+            "name": "List Data Hub policies",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://127.0.0.1:8888/api/v1/data-hub/policies"
+          },
+          "docs": "List Data Hub policies"
+        },
+        {
+          "info": {
+            "name": "Create a Data Hub policy",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://127.0.0.1:8888/api/v1/data-hub/policies"
+          },
+          "docs": "Create a Data Hub policy"
+        },
+        {
+          "info": {
+            "name": "Get a Data Hub policy",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://127.0.0.1:8888/api/v1/data-hub/policies/:policyId",
+            "params": [
+              {
+                "name": "policyId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a Data Hub policy"
+        },
+        {
+          "info": {
+            "name": "Update a Data Hub policy",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "http://127.0.0.1:8888/api/v1/data-hub/policies/:policyId",
+            "params": [
+              {
+                "name": "policyId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Update a Data Hub policy"
+        },
+        {
+          "info": {
+            "name": "Delete a Data Hub policy",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://127.0.0.1:8888/api/v1/data-hub/policies/:policyId",
+            "params": [
+              {
+                "name": "policyId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a Data Hub policy"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

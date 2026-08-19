@@ -1,0 +1,252 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "HiveMQ REST Data Hub Management API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Management",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List backups",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://127.0.0.1:8888/api/v1/management/backups"
+          },
+          "docs": "List backups"
+        },
+        {
+          "info": {
+            "name": "Create a backup",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://127.0.0.1:8888/api/v1/management/backups"
+          },
+          "docs": "Create a backup"
+        },
+        {
+          "info": {
+            "name": "Get a backup",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://127.0.0.1:8888/api/v1/management/backups/:backupId",
+            "params": [
+              {
+                "name": "backupId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a backup"
+        },
+        {
+          "info": {
+            "name": "Delete a backup",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://127.0.0.1:8888/api/v1/management/backups/:backupId",
+            "params": [
+              {
+                "name": "backupId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a backup"
+        },
+        {
+          "info": {
+            "name": "Restore a backup",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://127.0.0.1:8888/api/v1/management/backups/:backupId/restore",
+            "params": [
+              {
+                "name": "backupId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Restore a backup"
+        },
+        {
+          "info": {
+            "name": "Download a backup file",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://127.0.0.1:8888/api/v1/management/backups/:backupId/file",
+            "params": [
+              {
+                "name": "backupId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Download a backup file"
+        },
+        {
+          "info": {
+            "name": "List diagnostic archives",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://127.0.0.1:8888/api/v1/management/diagnostic-archives"
+          },
+          "docs": "List diagnostic archives"
+        },
+        {
+          "info": {
+            "name": "Create a diagnostic archive",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://127.0.0.1:8888/api/v1/management/diagnostic-archives"
+          },
+          "docs": "Create a diagnostic archive"
+        },
+        {
+          "info": {
+            "name": "Get a diagnostic archive",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://127.0.0.1:8888/api/v1/management/diagnostic-archives/:archiveId",
+            "params": [
+              {
+                "name": "archiveId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a diagnostic archive"
+        },
+        {
+          "info": {
+            "name": "Delete a diagnostic archive",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://127.0.0.1:8888/api/v1/management/diagnostic-archives/:archiveId",
+            "params": [
+              {
+                "name": "archiveId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a diagnostic archive"
+        },
+        {
+          "info": {
+            "name": "List trace recordings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://127.0.0.1:8888/api/v1/management/trace-recordings"
+          },
+          "docs": "List trace recordings"
+        },
+        {
+          "info": {
+            "name": "Start a trace recording",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://127.0.0.1:8888/api/v1/management/trace-recordings"
+          },
+          "docs": "Start a trace recording"
+        },
+        {
+          "info": {
+            "name": "Get a trace recording",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://127.0.0.1:8888/api/v1/management/trace-recordings/:recordingId",
+            "params": [
+              {
+                "name": "recordingId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a trace recording"
+        },
+        {
+          "info": {
+            "name": "Stop and delete a trace recording",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://127.0.0.1:8888/api/v1/management/trace-recordings/:recordingId",
+            "params": [
+              {
+                "name": "recordingId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Stop and delete a trace recording"
+        },
+        {
+          "info": {
+            "name": "Download a trace recording file",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://127.0.0.1:8888/api/v1/management/trace-recordings/:recordingId/file",
+            "params": [
+              {
+                "name": "recordingId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Download a trace recording file"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
