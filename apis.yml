@@ -25,6 +25,13 @@ tags:
 - IoT
 - Messaging
 - Message Broker
+- Pub-Sub
+- WebSocket
+tags_raw:
+- MQTT
+- IoT
+- Messaging
+- Message Broker
 - Pub Sub
 - WebSocket
 url: https://raw.githubusercontent.com/api-evangelist/hivemq/refs/heads/main/apis.yml
@@ -40,6 +47,11 @@ apis:
   humanURL: https://docs.hivemq.com/hivemq/latest/user-guide/listeners.html
   baseURL: ws://localhost:8000/mqtt
   tags:
+  - MQTT
+  - WebSocket
+  - Pub-Sub
+  - IoT
+  tags_raw:
   - MQTT
   - WebSocket
   - Pub Sub
@@ -83,6 +95,8 @@ apis:
   humanURL: https://docs.hivemq.com/hivemq/latest/rest-api/index.html
   baseURL: http://127.0.0.1:8888
   tags:
+  - MQTT
+  tags_raw:
   - Mqtt
   properties:
   - type: OpenAPI
