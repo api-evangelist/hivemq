@@ -118,6 +118,9 @@ apis:
   - type: Configuration
     url: https://docs.hivemq.com/hivemq/latest/rest-api/configuration.html
 common:
+- type: CapabilityMap
+  url: capabilities/hivemq-capability-edges.yml
+  name: HiveMQ Business Capability Map
 - type: AgenticAccess
   url: agentic-access/hivemq-agentic-access.yml
 - type: TrustCenter

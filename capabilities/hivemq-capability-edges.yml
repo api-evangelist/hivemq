@@ -1,0 +1,26 @@
+slug: hivemq
+provider: HiveMQ
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Telecommunications
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 1
+edges:
+- tag: Management
+  spec_file: hivemq-management-api-openapi.yml
+  capability_id: BC-600.40
+  capability_id_l1: BC-600
+  capability_name: IT Operations Management
+  confidence: 0.7
+  evidence: POST /management/backups  Create a backup; POST /management/backups/{backupId}/restore  Restore
+    a backup; POST /management/diagnostic-archives; GET /management/trace-recordings
+  reason: Administrative operations on a broker deployment — backups/restore, diagnostic archives, trace
+    recordings. This is day-to-day IT operations and monitoring of a platform, a cross-industry IT capability
+    rather than any telecom-specific one.
