@@ -7,6 +7,18 @@ description: HiveMQ is an enterprise MQTT broker and IoT connectivity platform t
   Hub. HiveMQ exposes a REST API (OpenAPI 3.0) for broker administration, client management, backups,
   trace recordings, and Data Hub policy management.
 type: Index
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: false
+  label: Hosted service · you call their endpoint
+  confidence: medium
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: unknown
   onboarding: self-serve
