@@ -37,7 +37,7 @@ tags:
 - IoT
 - Messaging
 - Message Broker
-- Pub Sub
+- Pub-Sub
 - WebSocket
 tags_raw:
 - MQTT
@@ -61,7 +61,7 @@ apis:
   tags:
   - MQTT
   - WebSocket
-  - Pub Sub
+  - Pub-Sub
   - IoT
   tags_raw:
   - MQTT
@@ -107,7 +107,7 @@ apis:
   humanURL: https://docs.hivemq.com/hivemq/latest/rest-api/index.html
   baseURL: http://127.0.0.1:8888
   tags:
-  - Mqtt
+  - MQTT
   tags_raw:
   - Mqtt
   properties:
