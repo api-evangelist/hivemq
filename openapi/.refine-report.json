@@ -1,9 +1,7 @@
 {
   "provider": "hivemq",
   "sources": [
-    "hivemq-data-hub-api-openapi.yml",
-    "hivemq-management-api-openapi.yml",
-    "hivemq-mqtt-api-openapi.yml"
+    "_original/hivemq-openapi.yml"
   ],
   "outputs": [
     "hivemq-data-hub-api-openapi.yml",
@@ -13,6 +11,47 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "hivemq-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "hivemq-openapi.yml: tagged paths GET /mqtt/clients -> Mqtt",
+    "hivemq-openapi.yml: tagged paths GET /mqtt/clients/{clientId} -> Mqtt",
+    "hivemq-openapi.yml: tagged paths DELETE /mqtt/clients/{clientId} -> Mqtt",
+    "hivemq-openapi.yml: tagged paths GET /mqtt/clients/{clientId}/connection -> Mqtt",
+    "hivemq-openapi.yml: tagged paths GET /mqtt/clients/{clientId}/subscriptions -> Mqtt",
+    "hivemq-openapi.yml: tagged paths DELETE /mqtt/clients/{clientId}/session -> Mqtt",
+    "hivemq-openapi.yml: tagged paths GET /management/backups -> Management",
+    "hivemq-openapi.yml: tagged paths POST /management/backups -> Management",
+    "hivemq-openapi.yml: tagged paths GET /management/backups/{backupId} -> Management",
+    "hivemq-openapi.yml: tagged paths DELETE /management/backups/{backupId} -> Management",
+    "hivemq-openapi.yml: tagged paths POST /management/backups/{backupId}/restore -> Management",
+    "hivemq-openapi.yml: tagged paths GET /management/backups/{backupId}/file -> Management",
+    "hivemq-openapi.yml: tagged paths GET /management/diagnostic-archives -> Management",
+    "hivemq-openapi.yml: tagged paths POST /management/diagnostic-archives -> Management",
+    "hivemq-openapi.yml: tagged paths GET /management/diagnostic-archives/{archiveId} -> Management",
+    "hivemq-openapi.yml: tagged paths DELETE /management/diagnostic-archives/{archiveId} -> Management",
+    "hivemq-openapi.yml: tagged paths GET /management/trace-recordings -> Management",
+    "hivemq-openapi.yml: tagged paths POST /management/trace-recordings -> Management",
+    "hivemq-openapi.yml: tagged paths GET /management/trace-recordings/{recordingId} -> Management",
+    "hivemq-openapi.yml: tagged paths DELETE /management/trace-recordings/{recordingId} -> Management",
+    "hivemq-openapi.yml: tagged paths GET /management/trace-recordings/{recordingId}/file -> Management",
+    "hivemq-openapi.yml: tagged paths GET /data-hub/schemas -> Data Hub",
+    "hivemq-openapi.yml: tagged paths POST /data-hub/schemas -> Data Hub",
+    "hivemq-openapi.yml: tagged paths GET /data-hub/schemas/{schemaId} -> Data Hub",
+    "hivemq-openapi.yml: tagged paths DELETE /data-hub/schemas/{schemaId} -> Data Hub",
+    "hivemq-openapi.yml: tagged paths GET /data-hub/policies -> Data Hub",
+    "hivemq-openapi.yml: tagged paths POST /data-hub/policies -> Data Hub",
+    "hivemq-openapi.yml: tagged paths GET /data-hub/policies/{policyId} -> Data Hub",
+    "hivemq-openapi.yml: tagged paths PUT /data-hub/policies/{policyId} -> Data Hub",
+    "hivemq-openapi.yml: tagged paths DELETE /data-hub/policies/{policyId} -> Data Hub",
+    "hivemq-openapi.yml: declared missing tag: Data Hub",
+    "hivemq-openapi.yml: declared missing tag: Management",
+    "hivemq-openapi.yml: declared missing tag: Mqtt",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "hivemq-data-hub-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "hivemq-management-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "hivemq-mqtt-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
