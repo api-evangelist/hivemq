@@ -41,6 +41,7 @@ tags:
 - Message Broker
 - Pub-Sub
 - WebSocket
+- Real-Time
 tags_raw:
 - MQTT
 - IoT
@@ -48,6 +49,7 @@ tags_raw:
 - Message Broker
 - Pub Sub
 - WebSocket
+- Real-Time
 url: https://raw.githubusercontent.com/api-evangelist/hivemq/refs/heads/main/apis.yml
 created: '2026-05-11'
 modified: '2026-08-08'
