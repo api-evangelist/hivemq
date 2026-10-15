@@ -15,3 +15,35 @@
   relationship: distribution-channel
   status: not-a-workflow
   arazzo: null
+- slug: hivemq-opc-foundation-opc-ua
+  label: OPC Foundation (OPC UA)
+  partner_name: OPC Foundation (OPC UA)
+  category: OPC UA products
+  type: register
+  channel: standard-directory
+  evidence: https://opcfoundation.org/products/view/hivemq-mqtt-data-broker/
+  source: edge
+  relationship: standard-participant
+  contract_reference:
+    register: OPC Foundation product marketplace (opcfoundation.org/products)
+    spec_file: null
+    standard: OPC UA
+    role: OPC UA product listed
+    registered_name: HiveMQ
+    member_id: '7285'
+    website: https://www.hivemq.com/
+    matched_domain: hivemq.com
+    matched_by: domain
+    listed_products: 2
+    certified_products: []
+    listed_categories:
+    - Data Integration
+    sample_products:
+    - HiveMQ HiveMQ MQTT Cloud Managed Data Broker Show details
+    - HiveMQ HiveMQ MQTT Self Hosted Data Broker Show details
+    signal_note: certified_products = one entry per product CATEGORY with a certified product (diversity), never
+      per product; listed_products is context, never read
+    detected_by: sweep-industrial-robotics.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
