@@ -39,7 +39,7 @@ tags:
 - IoT
 - Messaging
 - Message Broker
-- Pub-Sub
+- Pub/Sub
 - WebSocket
 - Real-Time
 tags_raw:
@@ -65,7 +65,7 @@ apis:
   tags:
   - MQTT
   - WebSocket
-  - Pub-Sub
+  - Pub/Sub
   - IoT
   tags_raw:
   - MQTT
