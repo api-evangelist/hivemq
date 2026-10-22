@@ -64,6 +64,38 @@ edges:
     detected: '2026-10-18'
   detected_by: sweep-official-sdks.py
   first_seen: '2026-10-18'
+- partner_name: OPC Foundation (OPC UA)
+  partner: null
+  partner_match: register
+  type: register
+  direction: partner-built
+  evidence: https://opcfoundation.org/products/view/hivemq-mqtt-data-broker/
+  category: OPC UA products
+  channel: standard-directory
+  relationship: standard-participant
+  contract_reference:
+    register: OPC Foundation product marketplace (opcfoundation.org/products)
+    spec_file: null
+    standard: OPC UA
+    role: OPC UA product listed
+    registered_name: HiveMQ
+    member_id: '7285'
+    website: https://www.hivemq.com/
+    matched_domain: hivemq.com
+    matched_by: domain
+    listed_products: 2
+    certified_products: []
+    listed_categories:
+    - Data Integration
+    sample_products:
+    - HiveMQ HiveMQ MQTT Cloud Managed Data Broker Show details
+    - HiveMQ HiveMQ MQTT Self Hosted Data Broker Show details
+    signal_note: certified_products = one entry per product CATEGORY with a certified product (diversity), never
+      per product; listed_products is context, never read
+    detected_by: sweep-industrial-robotics.py
+    detected: '2026-10-19'
+  detected_by: sweep-industrial-robotics.py
+  first_seen: '2026-10-15'
 - partner_name: Cloud Security Alliance STAR Registry
   partner: null
   partner_match: register
@@ -98,38 +130,6 @@ edges:
     detected: '2026-10-20'
   detected_by: sweep-compliance-assurance.py
   first_seen: '2026-10-20'
-- partner_name: OPC Foundation (OPC UA)
-  partner: null
-  partner_match: register
-  type: register
-  direction: partner-built
-  evidence: https://opcfoundation.org/products/view/hivemq-mqtt-data-broker/
-  category: OPC UA products
-  channel: standard-directory
-  relationship: standard-participant
-  contract_reference:
-    register: OPC Foundation product marketplace (opcfoundation.org/products)
-    spec_file: null
-    standard: OPC UA
-    role: OPC UA product listed
-    registered_name: HiveMQ
-    member_id: '7285'
-    website: https://www.hivemq.com/
-    matched_domain: hivemq.com
-    matched_by: domain
-    listed_products: 2
-    certified_products: []
-    listed_categories:
-    - Data Integration
-    sample_products:
-    - HiveMQ HiveMQ MQTT Cloud Managed Data Broker Show details
-    - HiveMQ HiveMQ MQTT Self Hosted Data Broker Show details
-    signal_note: certified_products = one entry per product CATEGORY with a certified product (diversity), never
-      per product; listed_products is context, never read
-    detected_by: sweep-industrial-robotics.py
-    detected: '2026-10-15'
-  detected_by: sweep-industrial-robotics.py
-  first_seen: '2026-10-15'
 source:
 - https://opcfoundation.org/products/
 - https://marketplace.odva.org/organizations
